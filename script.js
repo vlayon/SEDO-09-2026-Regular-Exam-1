@@ -1,4 +1,32 @@
-document.getElementById('apply-btn').addEventListener('click', function () {
-  var c = document.getElementById('color-input').value;
-  document.getElementById('box').style.backgroundColor = c;
+function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+
+// adding a comment here
+function multiply(a, b) {
+  return a * b;
+}
+
+function calculateAndDisplay(fn) {
+  const rawA = document.getElementById('a').value;
+  const rawB = document.getElementById('b').value;
+
+  if (rawA === '' || rawB === '') {
+    document.getElementById('result').textContent = 'Please fill both inputs';
+    return;
+  }
+
+  const a = Number(rawA);
+  const b = Number(rawB);
+  document.getElementById('result').textContent = fn(a, b);
+}
+
+['add', 'subtract', 'multiply'].forEach(op => {
+  document.getElementById(`btn-${op}`)
+    .addEventListener('click', () => calculateAndDisplay(window[op]));
 });
