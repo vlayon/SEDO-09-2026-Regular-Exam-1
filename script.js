@@ -6,6 +6,8 @@ function subtract(a, b) {
   return a - b;
 }
 
+
+// adding a comment here
 function multiply(a, b) {
   return a * b;
 }
@@ -24,6 +26,10 @@ function calculateAndDisplay(fn) {
   document.getElementById('result').textContent = fn(a, b);
 }
 
+['add', 'subtract', 'multiply'].forEach(op => {
+  document.getElementById(`btn-${op}`)
+    .addEventListener('click', () => calculateAndDisplay(window[op]));
+});
 document.getElementById('btn-add')
   .addEventListener('click', () => calculateAndDisplay(add));
 
